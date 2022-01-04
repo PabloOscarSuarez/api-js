@@ -1,7 +1,7 @@
+const controllerAuth = require("../controllers/auth");
+
 const user = (router) => {
-  router.get("/users", (req, res) => {
-    res.send({ success: true });
-  });
+  router.post("/signUp", controllerAuth.signUp);
 };
 
 module.exports = user;

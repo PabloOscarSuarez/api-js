@@ -1,6 +1,8 @@
 "use strict";
 
+const { user } = require("pg/lib/defaults");
 const { Model } = require("sequelize");
+const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -38,5 +40,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  User.beforeCreate(cambiosDeContraseña);
+  User.prototype.toJSON = function () {
+    var values = Object.assign({}, this.get());
+    delete values.password;
+    return values;
+  };
   return User;
 };
+
+function cambiosDeContraseña(user) {
+  if (user.changed("password")) {
+    user.password = encriptarContrasaña(user.get("password"));
+  }
+}
+
+function encriptarContrasaña(contraseña) {
+  const salt = bcrypt.genSaltSync();
+  return bcrypt.hashSync(contraseña, salt);
+}
