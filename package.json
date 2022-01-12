@@ -19,7 +19,6 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^7.0.0-alpha.3"

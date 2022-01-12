@@ -37,26 +37,15 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User",
-      tableName: "Users",
     }
   );
 
-  // hook
   User.beforeCreate(cambiosDeContraseña);
   User.prototype.toJSON = function () {
     var values = Object.assign({}, this.get());
     delete values.password;
     return values;
   };
-  
-  User.prototype.verifyPassword = function (userPassword) {
-    var { password } = Object.assign({}, this.get());
-    console.log(password, userPassword)
-    
-    return bcrypt.compareSync(userPassword, password);
-  };
-
-
   return User;
 };
 
