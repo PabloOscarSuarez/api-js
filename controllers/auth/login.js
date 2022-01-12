@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
         }})
 
         if (!user) {
-            notFoundError("usuario no encontrado")
+            throw notFoundError("usuario no encontrado")
         }
         
         // devuelve un true si la comparación del pass con el hash es correcta
