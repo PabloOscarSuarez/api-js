@@ -1,6 +1,8 @@
 const jwt = require("./jwt");
+const user = require("./user");
 
 module.exports = {
   getJwt: jwt.getJWT,
-  verify: jwt.verifyJwt,
+  verifyJwtAndLoadPayload: jwt.verifyJwtAndLoadPayload,
+  createUser: user.createUser,
 };
