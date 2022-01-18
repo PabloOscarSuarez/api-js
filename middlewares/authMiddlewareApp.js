@@ -6,19 +6,20 @@ const notFoundError = require("../errors/notFoundError");
 module.exports = async (req, res, next) => {
   // vamos a poner la logica para validar el jwt, cargar el usuario y pasarselo al controller
 
-  const privateUrls = ["/profile", "/users"];
+  const privateUrls = ["/profile", "/users", "/task"];
 
   if (privateUrls.some((privateUrl) => req.url.includes(privateUrl))) {
     try {
       // desde aca
       ("Bearer dhasuidysa78d6sad6as");
       const { authorization } = req.headers;
-
+      
       // const [p1, token] = authorization.split(" ")
 
       if (!authorization) {
         throw badRequestError("jwt requerido");
       }
+
 
       // splitString: ["Bearer", "{{token}}"]
       const splitString = authorization.split(" ");
@@ -50,12 +51,12 @@ module.exports = async (req, res, next) => {
       }
 
       // vamos a cargar dentro del request el user cargado
-      req.user = user;
+      req.user = user.id;
 
       next();
     } catch (error) {
       res.status(403).json({
-        message: "error de sistema",
+        message: "operacion desautorizada",
         detail: error.message,
       });
     }
