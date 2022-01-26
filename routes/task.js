@@ -1,16 +1,18 @@
-const c = require('../middlewares/authMiddleware')
+const {
+  createTask,
+  getTasks,
+} = require('../controllers/task')
 
 const task = (router) => {
-  // TODO: todas estas rutas tienen que pasar inicialmente por Task
-  router.get("/", () => { 
-    // TODO: devuelve todas las tareas
-  });
+  router.post("/task", createTask);
+
+  router.get("/task", getTasks);
+
+
   router.get("/:id", () => { 
     // TODO: devuelve el detalle de la tarea
   });
-  router.post("/", () => { 
-    // TODO: crear tarea 
-  });
+  
   router.put("/:id", () => { 
     // TODO: actualizar tarea 
   });
