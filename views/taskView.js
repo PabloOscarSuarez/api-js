@@ -4,7 +4,8 @@ function taskView(task) {
         id: task.id,
         description: task.description,
         createdAt: task.createdAt,
-        user: userView(task.user)
+        user: userView(task.user),
+        labels: task.labels,
     }
 }
 

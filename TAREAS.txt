@@ -2,3 +2,6 @@
 
 - Crear rutas, controladores y DAOS para la entidad Tarea
 - Vamos a relaciones la entidad Tarea con la entidad Usuario
+
+02/02
+- Crear la entidad Label y relacionarla con tarea

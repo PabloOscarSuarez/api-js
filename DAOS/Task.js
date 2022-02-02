@@ -13,7 +13,7 @@ function getTasksForUserDAO(userId) {
         where: {
             userId,
         },
-        include: "user",
+        include: ["user", "labels"],
     })
 }
 

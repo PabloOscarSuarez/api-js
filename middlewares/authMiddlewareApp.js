@@ -5,10 +5,11 @@ const notFoundError = require("../errors/notFoundError");
 
 module.exports = async (req, res, next) => {
   // vamos a poner la logica para validar el jwt, cargar el usuario y pasarselo al controller
-
-  const privateUrls = ["/profile", "/users", "/task"];
+  console.log(1)
+  const privateUrls = ["/profile", "/users", "/task", "/label"];
 
   if (privateUrls.some((privateUrl) => req.url.includes(privateUrl))) {
+    console.log(2)
     try {
       // desde aca
       ("Bearer dhasuidysa78d6sad6as");
@@ -27,7 +28,7 @@ module.exports = async (req, res, next) => {
 
       // verificamos el jwt y cargamos el payload
       let payload;
-
+      console.log(3)
       try {
         payload = await verifyJwtAndLoadPayload(token);
       } catch (error) {
@@ -42,17 +43,19 @@ module.exports = async (req, res, next) => {
         throw badRequestError("token expirado");
       }
 
+      console.log(4)
+
       // 2. Cargar el usuario de la bd a partir del userId
 
       const user = await User.getUserById(payload.userId);
-
+      console.log(5)
       if (!user) {
         throw notFoundError(`usuario ${payload.userId} no encontrado`);
       }
 
       // vamos a cargar dentro del request el user cargado
       req.user = user.id;
-
+      console.log(6)
       next();
     } catch (error) {
       res.status(403).json({
