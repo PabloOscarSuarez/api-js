@@ -4,8 +4,8 @@
   "description": "api de usuarios ",
   "main": "index.js",
   "scripts": {
+    "start": "sequelize db:migrate & node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "pablo",
@@ -22,6 +22,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^7.0.0-alpha.3"
+    "sequelize": "^7.0.0-alpha.3",
+    "sequelize-cli": "^6.4.1"
   }
 }

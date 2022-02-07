@@ -9,4 +9,12 @@ module.exports = {
     dialect: "postgres",
     port: 5433,
   },
+  production: {
+    username: "lbgjgfca",
+    password: "G8bzSCvbbGGtBkpzocj_ABeemmPezCE2",
+    database: "lbgjgfca",
+    host: "	abul.db.elephantsql.com",
+    dialect: "postgres",
+    port: 5433,
+  },
 };
